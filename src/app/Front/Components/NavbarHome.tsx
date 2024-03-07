@@ -1,7 +1,16 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
 
+import { signIn } from "next-auth/react";
+
 const NavbarHome = () => {
+
+    const handleClickLogin = ()=>{
+        signIn()
+    }
+
   return (
         <ul className='w-80  bg-red-900 grid grid-cols-3 place-items-center'>
             <li>
@@ -10,9 +19,9 @@ const NavbarHome = () => {
             <li>
                 <Link href='/'>Precios</Link>
             </li>
-            <li>
-                <Link className='hover:underline' href='/dashboard'>Login</Link>
-            </li>
+            <button onClick={handleClickLogin}>
+                login
+            </button>
         </ul>
   )
 }

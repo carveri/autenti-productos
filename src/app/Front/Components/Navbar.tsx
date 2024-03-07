@@ -1,7 +1,18 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
 
+
+import { signOut } from "next-auth/react";
+
 const Navbar = () => {
+
+    const handleClickLogOut = ()=>{
+        signOut()
+        
+    }
+
   return (
         <ul className='w-80 h-14 bg-red-900 grid grid-cols-3 place-items-center'>
            
@@ -11,9 +22,9 @@ const Navbar = () => {
             <li>
                 <Link href='/'>Mi Cuenta</Link>
             </li>
-            <li >
-                <Link className=' hover:underline' href='/'>Salir</Link>
-            </li>
+            <button onClick={handleClickLogOut}>
+                Salir
+            </button>
         </ul>
   )
 }
