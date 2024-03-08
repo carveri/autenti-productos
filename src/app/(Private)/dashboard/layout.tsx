@@ -11,7 +11,7 @@ export default function PrivateLayout({children,}: Readonly<{children: React.Rea
             <header className="h-14 w-full grid place-content-center" >
                 GASTOS
             </header>
-            <main className="h-36 w-full bg-red-900">
+            <main className="h-44 w-full bg-red-900">
                 <Sidebar />
             </main>
         </section>

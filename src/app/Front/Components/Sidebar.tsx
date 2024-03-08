@@ -22,7 +22,7 @@ const Sidebar = async() => {
         <header className='h-20 grid place-items-center'>
             Dashboard
         </header>
-        <ul className='w-full h-full bg-blue-100 grid grid-rows-3 items-center '>
+        <ul className='w-full h-full bg-blue-100 grid grid-rows-4 items-center '>
             <li className='cursor-pointer pr-11 py-4 hover:bg-gray-700 pl-4'>
                 <Link className='pr-56 py-4 ' href='/dashboard'>Home</Link>
             </li>
@@ -31,6 +31,9 @@ const Sidebar = async() => {
             </li>
             <li className='cursor-pointer pr-11 py-4 hover:bg-gray-700  pl-4'>
                 <Link className='pr-56 py-4 ' href='/dashboard/planta'>Planta</Link>
+            </li>
+            <li className='cursor-pointer pr-11 py-4 hover:bg-gray-700  pl-4'>
+                <Link className='pr-56 py-4 ' href='/dashboard/perfil'>Perfil</Link>
             </li>
         </ul>
         <div className='mt-80 h-14 bg-blue-500 grid content-center pl-4'>

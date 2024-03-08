@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Tilt_Warp } from "next/font/google";
 import "./globals.css";
+import AuthProvider from "@/auth/components/AuthProvider";
 
 const tiltWarp = Tilt_Warp({ subsets: ["latin"], weight:['400'] });
 
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={tiltWarp.className}>{children}</body>
-    </html>
+    <AuthProvider>
+      <html lang="es">
+        <body className={tiltWarp.className}>{children}</body>
+      </html>
+    </AuthProvider>
   );
 }
