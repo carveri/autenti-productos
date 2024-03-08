@@ -51,6 +51,7 @@ model User {
   id            String    @id @default(uuid())
   name          String?
   // roles         String[]  @default(["user"])
+  password      String? 
   isActive      Boolean @default(true)
   email         String?   @unique
   emailVerified DateTime?
