@@ -2,8 +2,11 @@
 
 import { postData } from '@/app/Fetch/postData'
 import {useState} from 'react'
+import { useSession } from "next-auth/react";
 
 const Formulario = () => {
+
+    const {data: session} = useSession()
 
     const [producto, setProducto] = useState('')
     const [precio, setPrecio] = useState('')
@@ -22,10 +25,14 @@ const Formulario = () => {
     const handleSubmitProducto = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         console.log(producto, precio);
+        console.log(session?.user?.id ?? 'as');
+        
 
         const ruta = 'user'
-        const data = {producto, precio}
-        //postData({ruta, data})
+        const userId = ''
+        const data = {producto, precio, userId}
+        
+        //postData({ruta, data, userId})
         
     }
 

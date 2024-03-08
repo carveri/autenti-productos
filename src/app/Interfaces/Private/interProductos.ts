@@ -10,6 +10,7 @@ export interface InterProducto {
 export interface Data {
     producto: string
     precio: string
+    userId: string
 }
 
 export interface PostInterProducto {
