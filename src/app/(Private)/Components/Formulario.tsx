@@ -24,18 +24,21 @@ const Formulario = () => {
 
     const handleSubmitProducto = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        console.log(nombreProducto, precio);
-        console.log(session?.user?.id ?? 'as');
-        console.log(typeof(nombreProducto));
-        console.log(typeof(precio));
-        console.log(typeof(session?.user?.id ?? 'as'));
+
+        try {
+            const ruta = 'producto'
+            const userId = session?.user?.id
+            const data = {nombreProducto, precio, userId}
+            postData({ruta, data})
+        } catch (error) {
+            console.log(error);
+        }
+        finally{
+            setNombreProducto('')
+            setPrecio(0)
+        }
+
         
-        
-        const ruta = 'producto'
-        const userId = session?.user?.id
-        const data = {nombreProducto, precio, userId}
-        
-        postData({ruta, data})
         
     }
 
@@ -48,11 +51,11 @@ const Formulario = () => {
         <main className='h-3/6 grid grid-rows-2'>
             <div className='grid'>
                 <label className=' grid content-center ' htmlFor="">Producto</label>
-                <input onChange={handleChangeProducto} name='producto' className='h-14 pl-4' type="text" />
+                <input value={nombreProducto} onChange={handleChangeProducto} name='producto' className='h-14 pl-4' type="text" />
             </div>
             <div className='grid'>
                 <label className=' grid content-center ' htmlFor="">Precio</label>
-                <input onChange={handleChangeProducto} name='precio' className='h-14 pl-4' type="number" />
+                <input value={precio} onChange={handleChangeProducto} name='precio' className='h-14 pl-4' type="number" />
             </div>
         </main>
         <div className='grid place-items-center mt-4'>
