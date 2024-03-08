@@ -7,6 +7,11 @@ export interface InterProducto {
 
 
 // chico
+
+// export interface UserId {
+
+// }
+
 export interface Data {
     producto: string
     precio: string

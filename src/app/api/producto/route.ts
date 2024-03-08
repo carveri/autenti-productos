@@ -3,22 +3,12 @@ import prisma from "@/libs/prisma";
 
 
 // post
-export const POST =async(req: Request)=>{
-
-    const {nombreProducto, precio, userId} = await req.json()
-
+export const POST = async(req: Request)=>{
     try {
         const saveProducto = await prisma.producto.create({
-            data: {
-                nombreProducto, 
-                precio,
-                userId
-            }
-            
+            data: await req.json()
         })
-        return NextResponse.json(saveProducto, {
-            status: 201
-        })
+        return NextResponse.json(saveProducto)
     } catch (error) {
         return NextResponse.json(error, {
             status: 500

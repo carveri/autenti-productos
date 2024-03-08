@@ -8,14 +8,14 @@ const Formulario = () => {
 
     const {data: session} = useSession()
 
-    const [producto, setProducto] = useState('')
-    const [precio, setPrecio] = useState('')
+    const [nombreProducto, setNombreProducto] = useState('')
+    const [precio, setPrecio] = useState(0)
 
     const handleChangeProducto = (e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name === 'producto'){
-            setProducto(e.target.value)
+            setNombreProducto(e.target.value)
         }else if(e.target.name === 'precio'){
-            setPrecio(e.target.value)
+            setPrecio(e.target.valueAsNumber)
         }
         else{
             console.log('sdsd');
@@ -24,15 +24,18 @@ const Formulario = () => {
 
     const handleSubmitProducto = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        console.log(producto, precio);
+        console.log(nombreProducto, precio);
         console.log(session?.user?.id ?? 'as');
+        console.log(typeof(nombreProducto));
+        console.log(typeof(precio));
+        console.log(typeof(session?.user?.id ?? 'as'));
         
-
-        const ruta = 'user'
-        const userId = ''
-        const data = {producto, precio, userId}
         
-        //postData({ruta, data, userId})
+        const ruta = 'producto'
+        const userId = session?.user?.id
+        const data = {nombreProducto, precio, userId}
+        
+        postData({ruta, data})
         
     }
 
@@ -45,11 +48,11 @@ const Formulario = () => {
         <main className='h-3/6 grid grid-rows-2'>
             <div className='grid'>
                 <label className=' grid content-center ' htmlFor="">Producto</label>
-                <input value={producto} onChange={handleChangeProducto} name='producto' className='h-14 pl-4' type="text" />
+                <input onChange={handleChangeProducto} name='producto' className='h-14 pl-4' type="text" />
             </div>
             <div className='grid'>
                 <label className=' grid content-center ' htmlFor="">Precio</label>
-                <input value={precio} onChange={handleChangeProducto} name='precio' className='h-14 pl-4' type="text" />
+                <input onChange={handleChangeProducto} name='precio' className='h-14 pl-4' type="number" />
             </div>
         </main>
         <div className='grid place-items-center mt-4'>
