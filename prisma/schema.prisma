@@ -16,6 +16,10 @@ model Producto {
   precio Int 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // USER FUERTE VS PRODUCTOS
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
 
 
@@ -58,6 +62,12 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  // relacion de usuario y productos
+  // PRODUCTO DEBIL VS USER
+  productos Producto[]
+  
+  
 }
 
 model VerificationToken {
