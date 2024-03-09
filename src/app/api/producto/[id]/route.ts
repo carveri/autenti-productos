@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server"
 import prisma from "@/libs/prisma";
+import { NextResponse } from "next/server"
 
 
 interface Params{
@@ -7,26 +7,27 @@ interface Params{
         id: string
     }
 }
-// put
-export const PUT =async(req: Request, {params}:Params)=>{
-    const {id} = params
-    const {nombreProducto, precio, userId} = await req.json()
 
+import { getUserSessionSever } from "./../../../../auth/actions/auth-actions";
+
+// put
+export const PUT = async(req: Request, {params}:Params)=>{
+    const {nombreProducto, precio, userId} = await req.json()
+    const {id} = params
     try {
-        const updatedOneProducto = await prisma.producto.update({
+        const updatedAllProductos = await prisma.producto.update({
             where:{
-                id:id
+                id: id
             },
             data:{
                 nombreProducto,
-                precio, 
+                precio,
                 userId
             }
         })
-        return NextResponse.json(updatedOneProducto, {
+        return NextResponse.json(updatedAllProductos, {
             status: 201
         })
-
     } catch (error) {
         return NextResponse.json(error, {
             status: 500
@@ -35,8 +36,8 @@ export const PUT =async(req: Request, {params}:Params)=>{
 }
 
 
-// delete 
-export const DELETE = async(req: Request, {params}: Params)=>{
+// delete
+export const DELETE = async(req: Request, {params}:Params)=>{
     const {id} = params
     try {
         const deleteOneProducto = await prisma.producto.delete({
@@ -55,16 +56,19 @@ export const DELETE = async(req: Request, {params}: Params)=>{
 }
 
 
-// get ONE
-export const GET = async(req: Request, {params}:Params)=>{
+// get One
+export const GET = async(req:Request, {params}: Params)=>{
+
+    //const user = await getUserSessionSever()
+
     const {id} = params
     try {
         const getOneProducto = await prisma.producto.findUnique({
             where:{
-                id
+                id: id
             }
         })
-        return NextResponse.json(getOneProducto,{
+        return NextResponse.json(getOneProducto, {
             status: 200
         })
     } catch (error) {

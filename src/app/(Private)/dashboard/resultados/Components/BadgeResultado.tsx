@@ -2,7 +2,7 @@ import React from 'react'
 
 const BadgeResultado = ({nombreProducto, precio, userId}) => {
   return (
-    <div className='w-96 h-14 grid grid-cols-2 place-items-center border-2 border-gray-700'>
+    <div className='w-96 h-14 grid grid-cols-2 place-items-center border-2 border-gray-700 bg-gray-500'>
         <section>
             {nombreProducto}
         </section>

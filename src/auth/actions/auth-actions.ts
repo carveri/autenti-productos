@@ -1,5 +1,17 @@
+'use server'
+
+import { getServerSession } from "next-auth/next";
 import prisma from "./../../libs/prisma";
 import bcrypt from "bcryptjs";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
+
+export const getUserSessionSever = async()=>{
+    
+    const session = await getServerSession(authOptions)
+
+    return session?.user?.id
+}
 
 export const singInEmailPassword = async(email: string, password: string)=>{
     // si no me manda el email o el password, no se puede autenticar

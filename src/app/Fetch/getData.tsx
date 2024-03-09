@@ -1,9 +1,7 @@
 
-import { InterProducto } from "../Interfaces/Private/interProductos"
-
 // lo usa
 // app/private/components/formulario
-export const getData = async({ruta}: InterProducto)=>{
+export const getData = async({ruta})=>{
     try {
         const apiUrl = `http://localhost:3000/api/${ruta}`
 
