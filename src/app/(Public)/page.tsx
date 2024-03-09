@@ -17,7 +17,7 @@ const page = async() => {
 
   console.log(session);
 
-  const userPintar:Session = session
+  const userPintar:any = session
 
   return (
     <div>

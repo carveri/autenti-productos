@@ -2,7 +2,9 @@
 
 // lo usa dashboard/resultados/componenst/badgeresultado
 
-export const deleteData = async({ruta,idProducto})=>{
+import { InterDeleteData } from "../Interfaces/Private/interFetch"
+
+export const deleteData = async({ruta,idProducto}:InterDeleteData)=>{
     try {
         const apiUrl = `http://localhost:3000/api/${ruta}/${idProducto}`
 

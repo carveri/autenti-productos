@@ -3,15 +3,16 @@
 import React from 'react'
 import { useRouter } from "next/navigation";
 import { deleteData } from '@/app/Fetch/deleteData';
+import { BadgeResultados } from '@/app/Interfaces/Private/interResultados';
 
-const BadgeResultado = ({nombreProducto, precio, userId, id}) => {
+const BadgeResultado = ({nombreProducto, precio, id}:BadgeResultados) => {
 
   
-  
+  const router = useRouter()
   const idProdu = id
   
-  const handleClickBadgeResultados = (e)=>{
-      const router = useRouter()
+  const handleClickBadgeResultados = (e:React.ChangeEvent<HTMLInputElement> & React.MouseEvent<HTMLButtonElement>)=>{
+      
       if(e.target.name === 'informacion'){
         router.push(`/dashboard/resultados/${idProdu}`)
       }

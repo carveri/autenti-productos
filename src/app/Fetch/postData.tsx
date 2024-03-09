@@ -1,9 +1,8 @@
-import { InterProducto, PostInterProducto } from "../Interfaces/Private/interProductos"
-
+import { InterPostData } from "../Interfaces/Private/interFetch"
 
 // lo usa
 // app/private/components/formulario
-export const postData =async({ruta, data})=>{
+export const postData =async({ruta, data}:InterPostData)=>{
     //console.log(ruta);
     try {
         const apiUrl = `http://localhost:3000/api/${ruta}`

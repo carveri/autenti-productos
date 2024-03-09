@@ -31,12 +31,11 @@ const page =() => {
           :
           <div className='h-auto grid grid-cols-3 place-content-center gap-4 px-8 pt-6'>
             {producto.map((element)=>{
-            const {nombreProducto, precio, userId, id} = element
+            const {nombreProducto, precio, id} = element
             return <div key={id} className=' '>
               <BadgeResultado
               nombreProducto = {nombreProducto}
               precio = {precio}
-              userId = {userId}
               id={id}
             />
             </div>

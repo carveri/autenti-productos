@@ -1,16 +1,17 @@
 import { getOneData } from '@/app/Fetch/getOneData'
+import { ParamsFinal } from '@/app/Interfaces/Private/interResultados'
 import Link from 'next/link'
 import React from 'react'
 
-const page = async({params}) => {
+const page = async({params}:ParamsFinal) => {
 
     const idProducto = params.id
-    console.log('iddeperams:', idProducto);
+    //console.log('iddeperams:', idProducto);
     const res = await getOneData({idProducto})
 
     const {nombreProducto, precio, id, userId} = res
 
-    //console.log(res);
+    //console.log('parametros', params);
     
 
   return (

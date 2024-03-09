@@ -13,10 +13,7 @@ const Sidebar = async() => {
     if(!session){
       redirect('/api/auth/signin')
     }
-  
-    //console.log(session.user);
-
-    
+      
   return (
     <aside className='w-full h-full '>
         <header className='h-20 grid place-items-center'>
@@ -37,7 +34,7 @@ const Sidebar = async() => {
             </li>
         </ul>
         <div className='mt-80 h-14 bg-blue-500 grid content-center pl-4'>
-            {session.user.name ?? 'Nada'}
+            {session?.user?.name ?? 'Nada'}
         </div>
     </aside>
   )
