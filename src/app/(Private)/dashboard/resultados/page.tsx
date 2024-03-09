@@ -18,7 +18,7 @@ const page =() => {
     res()
   }, [])
   
-  console.log(producto);
+  //console.log(producto);
   
 
 
@@ -33,7 +33,7 @@ const page =() => {
             No hay productos 
           </div>
           :
-          <div className='h-auto grid grid-cols-3 place-content-center gap-y-3 px-8 pt-4'>
+          <div className='h-auto grid grid-cols-3 place-content-center gap-4 px-8 pt-6'>
             {producto.map((element)=>{
             const {nombreProducto, precio, userId} = element
             return <div key={userId} className=' '>
