@@ -2,9 +2,10 @@ import { getOneData } from '@/app/Fetch/getOneData'
 import Link from 'next/link'
 import React from 'react'
 
-const page = async() => {
+const page = async({params}) => {
 
-    const idProducto = `5a3d8000-55de-4563-805f-56cae0ea7b13`
+    const idProducto = params.id
+    console.log('iddeperams:', idProducto);
     const res = await getOneData({idProducto})
 
     const {nombreProducto, precio, id, userId} = res

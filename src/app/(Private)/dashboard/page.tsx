@@ -12,10 +12,6 @@ const page = async() => {
     redirect('/api/auth/signin')
   }
 
-  //console.log(session.user);
-  
-
-
   return (
     <div className="w-full h-full grid place-items-center">
       <section className="w-96 h-4/5 bg-red-700">

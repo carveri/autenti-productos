@@ -1,45 +1,36 @@
 'use client'
 
 import React from 'react'
-import { useSession } from "next-auth/react";
-
 import { useRouter } from "next/navigation";
 import { deleteData } from '@/app/Fetch/deleteData';
 
-const BadgeResultado = ({nombreProducto, precio, userId}) => {
+const BadgeResultado = ({nombreProducto, precio, userId, id}) => {
 
-  const {data: session} = useSession()
-
-  console.log("session:=>", session);
   
-
-  const router = useRouter()
   
-
+  const idProdu = id
+  
   const handleClickBadgeResultados = (e)=>{
+      const router = useRouter()
       if(e.target.name === 'informacion'){
-        router.push(`/dashboard/resultados/343443`)
+        router.push(`/dashboard/resultados/${idProdu}`)
       }
       else if(e.target.name === 'actualizar'){
-        console.log('soy el de actualizar');
+        console.log('soy el de actualizar, id del producto:', idProdu);
       }
       else if(e.target.name === 'borrar'){
         try {
           //const data = ''
           const ruta = 'producto'
-          const idProducto = '3e0cae6c-b378-4709-9221-51d4da98c08f'
+          const idProducto = idProdu
           deleteData({ruta, idProducto})
+          router.refresh()
         } catch (error) {
           console.log(error);
         }
-        finally{
-          router.refresh()
-        }
-        
       }
       else{
         console.log('mammaa');
-        
       }
   }
 
@@ -58,7 +49,7 @@ const BadgeResultado = ({nombreProducto, precio, userId}) => {
         </section>
         <section className=''>
           <article>
-            <button name='actualizar' onClick={()=>console.log((id))} className='bg-blue-500 w-24 mb-1 hover:bg-blue-900'>
+            <button name='actualizar' onClick={handleClickBadgeResultados} className='bg-blue-500 w-24 mb-1 hover:bg-blue-900'>
               Actualizar
             </button>
           </article>
