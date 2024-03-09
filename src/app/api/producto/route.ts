@@ -25,7 +25,7 @@ export const POST = async(req: Request)=>{
 export const GET = async(req: Request)=>{
 
     const id = await getUserSessionSever()
-    console.log('sessionas:', id);
+    //console.log('sessionas:', id);
     
 
     try {

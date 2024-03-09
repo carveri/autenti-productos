@@ -1,10 +1,20 @@
+import { getOneData } from '@/app/Fetch/getOneData'
 import Link from 'next/link'
 import React from 'react'
 
-const page = () => {
+const page = async() => {
+
+    const idProducto = `5a3d8000-55de-4563-805f-56cae0ea7b13`
+    const res = await getOneData({idProducto})
+
+    const {nombreProducto, precio, id, userId} = res
+
+    //console.log(res);
+    
+
   return (
     <div className='w-full h-full grid place-items-center'>
-        <div className='w-1/5 h-3/5 bg-gray-900 px-6'>
+        <div className='w-2/5 h-3/5 bg-gray-900 px-6'>
             <header className='w-full h-1/6 text-2xl grid place-content-center'>
                 Producto Unico
             </header>
@@ -12,25 +22,25 @@ const page = () => {
                 <section className=' grid items-center'>
                     <label htmlFor="">Nombre Producto:</label>
                     <article className='text-green-700 text-xl'>
-                        Television
+                        {nombreProducto}
                     </article>
                 </section>
                 <section className='grid items-center'>
                     <label htmlFor="">Precio del Producto:</label>
                     <article className='text-green-700 text-xl'>
-                        US$40
+                        US${precio}
                     </article>
                 </section>
                 <section className='grid items-center'>
                     <label htmlFor="">Id del Producto: </label>
                     <article className='text-green-700 text-xl'>
-                        3t7374u3b4343434232323
+                        {id}
                     </article>
                 </section>
                 <section className='grid items-center'>
                     <label htmlFor="">Le pertenece a: </label>
                     <article className='text-green-700 text-xl'>
-                        juan
+                        {userId}
                     </article>
                 </section>
             </main>
