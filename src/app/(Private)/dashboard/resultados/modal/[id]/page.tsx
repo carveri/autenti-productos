@@ -21,7 +21,7 @@ const ModalUpdateResultado = ({params}) => {
             setNombreProducto(e.target.value)
         }
         else if(e.target.name === 'precio'){
-            setPrecio(e.target.value)
+            setPrecio(e.target.valueAsNumber)
         }
         else{
             console.log('d');
