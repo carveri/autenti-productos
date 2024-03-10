@@ -1,16 +1,21 @@
-'use server'
 
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { getUserSessionSever } from "@/auth/actions/auth-actions";
+import { resultadosSchema } from "../Schemas/dashboard/resultadosSchema";
 
 
 
 // post
 export const POST = async(req: Request)=>{
+    const {nombreProducto, precio, userId} = await req.json()
     try {
         const saveProducto = await prisma.producto.create({
-            data: await req.json()
+            data: resultadosSchema.parse({
+                nombreProducto, 
+                precio, 
+                userId
+            })
         })
         return NextResponse.json(saveProducto)
     } catch (error) {

@@ -4,6 +4,8 @@ export interface BadgeResultados {
     nombreProducto: string
     precio: number
     id: string
+    setActivarModal: boolean
+    activarModal: boolean
 }
 
 

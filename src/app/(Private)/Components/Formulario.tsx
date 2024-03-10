@@ -4,6 +4,7 @@ import { postData } from '@/app/Fetch/postData'
 import {useState} from 'react'
 import { useSession } from "next-auth/react";
 
+
 const Formulario = () => {
 
     const {data: session} = useSession()
@@ -29,7 +30,9 @@ const Formulario = () => {
             const ruta = 'producto'
             const userId = session?.user?.id
             const data = {nombreProducto, precio, userId}
+
             postData({ruta, data})
+            alert('Producto guardado correctamente!')
         } catch (error) {
             console.log(error);
         }

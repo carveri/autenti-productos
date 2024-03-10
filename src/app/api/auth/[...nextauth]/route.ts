@@ -7,8 +7,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { singInEmailPassword } from "@/auth/actions/auth-actions";
 
 
-
-
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
 
