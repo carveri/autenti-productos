@@ -1,10 +1,16 @@
+'use client'
+
 import {useState} from 'react'
 import { useRouter } from "next/navigation";
 
-const ModalUpdateResultado = ({producto}) => {
+import { useSession } from "next-auth/react";
+import { postOneData } from '@/app/Fetch/postOneData';
 
-    const router = useRouter()
-    //console.log('producto::', producto);
+const ModalUpdateResultado = ({params}) => {
+
+    //console.log('parametrosososs:', params);
+    const {data: session} = useSession()
+    
     
 
     const [nombreProducto, setNombreProducto] = useState('')
@@ -24,8 +30,20 @@ const ModalUpdateResultado = ({producto}) => {
 
     const handleSubmitUpdateResultado = (e)=>{
         e.preventDefault()
-        console.log(nombreProducto, precio);
-        router.push('/dashboard/resultados')
+        // console.log('nombreProducto:', nombreProducto);
+        // console.log('precio', precio);
+        // console.log('productId:', productId);
+        const userId = session?.user?.id
+        //console.log('userId:', userId);
+
+        const ruta = 'producto'
+        const data = {nombreProducto, precio, userId} 
+        const id = params.id
+        postOneData({ruta, data, id})
+        
+        
+        
+        
         
     }
 

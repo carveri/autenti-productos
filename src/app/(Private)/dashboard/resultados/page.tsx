@@ -3,7 +3,7 @@
 import {useState, useEffect} from 'react'
 import BadgeResultado from './Components/BadgeResultado'
 import { getData } from '@/app/Fetch/getData'
-import ModalUpdateResultado from './Components/ModalUpdateResultado'
+//import ModalUpdateResultado from './Components/ModalUpdateResultado'
 
 const page =() => {
 
@@ -25,12 +25,6 @@ const page =() => {
       <header className='h-20  bg-green-500 grid place-content-center text-2xl'>
         Resultados
       </header>
-      {activarModal && 
-      
-        <ModalUpdateResultado
-          producto={producto}
-        />
-      }
       <div className='   '>
         {producto.length === 0 ?
           <div>

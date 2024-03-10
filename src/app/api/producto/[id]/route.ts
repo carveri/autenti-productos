@@ -8,7 +8,7 @@ interface Params{
     }
 }
 
-import { getUserSessionSever } from "./../../../../auth/actions/auth-actions";
+//import { getUserSessionSever } from "./../../../../auth/actions/auth-actions";
 
 // put
 export const PUT = async(req: Request, {params}:Params)=>{

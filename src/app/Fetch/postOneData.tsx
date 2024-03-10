@@ -1,8 +1,12 @@
 
 
-export const postOneData = async({ruta, data})=>{
+export const postOneData = async({ruta, data, id})=>{
+    console.log('ruta:', ruta);
+    console.log('data:', data);
+    console.log('id: ', id);
+    
     try {
-        const apiUrl = `http://localhost:3000/api/${ruta}/4`
+        const apiUrl = `http://localhost:3000/api/${ruta}/${id}`
 
         const res = await fetch(apiUrl,{
             method: 'PUT',

@@ -20,7 +20,7 @@ const BadgeResultado = ({nombreProducto, precio, id, setActivarModal, activarMod
       }
       else if(e.target.name === 'actualizar'){
         //console.log('soy el de actualizar, id del producto:', idProdu)
-        setActivarModal(!activarModal)
+        router.push(`/dashboard/resultados/modal/${idProdu}`)
       }
       else if(e.target.name === 'borrar'){
         try {
