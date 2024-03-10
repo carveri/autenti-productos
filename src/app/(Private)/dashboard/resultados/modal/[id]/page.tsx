@@ -5,18 +5,17 @@ import { useRouter } from "next/navigation";
 
 import { useSession } from "next-auth/react";
 import { postOneData } from '@/app/Fetch/postOneData';
+import { ParamsFinal } from '@/app/Interfaces/Private/interResultados';
 
-const ModalUpdateResultado = ({params}) => {
+const ModalUpdateResultado = ({params}:ParamsFinal) => {
 
-    //console.log('parametrosososs:', params);
     const {data: session} = useSession()
+    const route = useRouter()
     
-    
-
     const [nombreProducto, setNombreProducto] = useState('')
     const [precio, setPrecio] = useState(0)
 
-    const handleChangeModalResultado = (e)=>{
+    const handleChangeModalResultado = (e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name === 'nombreProducto'){
             setNombreProducto(e.target.value)
         }
@@ -28,23 +27,18 @@ const ModalUpdateResultado = ({params}) => {
         }
     }
 
-    const handleSubmitUpdateResultado = (e)=>{
+    const handleSubmitUpdateResultado = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        // console.log('nombreProducto:', nombreProducto);
-        // console.log('precio', precio);
-        // console.log('productId:', productId);
         const userId = session?.user?.id
-        //console.log('userId:', userId);
-
         const ruta = 'producto'
         const data = {nombreProducto, precio, userId} 
         const id = params.id
-        postOneData({ruta, data, id})
-        
-        
-        
-        
-        
+        try {
+            postOneData({ruta, data, id})
+            route.push('/dashboard/resultados')
+        } catch (error) {
+            alert('Ocurrio un error, intentalo otra vez')
+        }    
     }
 
   return (

@@ -3,12 +3,10 @@
 import {useState, useEffect} from 'react'
 import BadgeResultado from './Components/BadgeResultado'
 import { getData } from '@/app/Fetch/getData'
-//import ModalUpdateResultado from './Components/ModalUpdateResultado'
 
 const page =() => {
 
   const [producto, setProducto] = useState([])
-  const [activarModal, setActivarModal] = useState(false)
 
   useEffect(()=>{
     const res = async()=>{
@@ -39,8 +37,6 @@ const page =() => {
               nombreProducto = {nombreProducto}
               precio = {precio}
               id={id}
-              setActivarModal={setActivarModal}
-              activarModal = {activarModal}
             />
             </div>
           })}

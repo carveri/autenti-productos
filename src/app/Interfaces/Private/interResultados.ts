@@ -16,3 +16,11 @@ export interface ParamsBadgeResultados {
 export interface ParamsFinal {
     params: ParamsBadgeResultados
 }
+
+
+// BADGERESULTADOS
+export interface InterBadgeResultados {
+    nombreProducto: string
+    precio: number
+    id: string
+}

@@ -1,17 +1,11 @@
+import { ParamsFinal } from "@/app/Interfaces/Private/interResultados";
 import prisma from "@/libs/prisma";
 import { NextResponse } from "next/server"
+import { UpdateProductoSchema } from "../../Schemas/dashboard/updateProducto";
 
-
-interface Params{
-    params: {
-        id: string
-    }
-}
-
-//import { getUserSessionSever } from "./../../../../auth/actions/auth-actions";
 
 // put
-export const PUT = async(req: Request, {params}:Params)=>{
+export const PUT = async(req: Request, {params}:ParamsFinal)=>{
     const {nombreProducto, precio, userId} = await req.json()
     const {id} = params
     try {
@@ -19,11 +13,11 @@ export const PUT = async(req: Request, {params}:Params)=>{
             where:{
                 id: id
             },
-            data:{
+            data: UpdateProductoSchema.parse({
                 nombreProducto,
                 precio,
                 userId
-            }
+            })
         })
         return NextResponse.json(updatedAllProductos, {
             status: 201
@@ -37,7 +31,7 @@ export const PUT = async(req: Request, {params}:Params)=>{
 
 
 // delete
-export const DELETE = async(req: Request, {params}:Params)=>{
+export const DELETE = async(req: Request, {params}:ParamsFinal)=>{
     const {id} = params
     try {
         const deleteOneProducto = await prisma.producto.delete({
@@ -57,10 +51,7 @@ export const DELETE = async(req: Request, {params}:Params)=>{
 
 
 // get One
-export const GET = async(req:Request, {params}: Params)=>{
-
-    //const user = await getUserSessionSever()
-
+export const GET = async(req:Request, {params}: ParamsFinal)=>{
     const {id} = params
     try {
         const getOneProducto = await prisma.producto.findUnique({

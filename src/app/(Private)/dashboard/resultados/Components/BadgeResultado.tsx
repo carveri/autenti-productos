@@ -1,14 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useRouter } from "next/navigation";
 import { deleteData } from '@/app/Fetch/deleteData';
-import { BadgeResultados } from '@/app/Interfaces/Private/interResultados';
+import { InterBadgeResultados } from "@/app/Interfaces/Private/interResultados";
 
-const BadgeResultado = ({nombreProducto, precio, id, setActivarModal, activarModal}) => {
-
-  
-
+const BadgeResultado = ({nombreProducto, precio, id}:InterBadgeResultados) => {
   
   const router = useRouter()
   const idProdu = id
@@ -19,16 +15,13 @@ const BadgeResultado = ({nombreProducto, precio, id, setActivarModal, activarMod
         router.push(`/dashboard/resultados/${idProdu}`)
       }
       else if(e.target.name === 'actualizar'){
-        //console.log('soy el de actualizar, id del producto:', idProdu)
         router.push(`/dashboard/resultados/modal/${idProdu}`)
       }
       else if(e.target.name === 'borrar'){
         try {
-          //const data = ''
           const ruta = 'producto'
           const idProducto = idProdu
           deleteData({ruta, idProducto})
-          //router.refresh()
           location.reload();
           console.log('location:', location);
           

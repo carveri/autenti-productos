@@ -2,16 +2,16 @@
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { getUserSessionSever } from "@/auth/actions/auth-actions";
-import { resultadosSchema } from "../Schemas/dashboard/resultadosSchema";
+import { agregarSchema } from "../Schemas/dashboard/agregarSchema";
 
 
 
 // post
-export const POST = async(req: Request)=>{
+export const POST = async(req: Request)=>{    
     const {nombreProducto, precio, userId} = await req.json()
     try {
         const saveProducto = await prisma.producto.create({
-            data: resultadosSchema.parse({
+            data: agregarSchema.parse({
                 nombreProducto, 
                 precio, 
                 userId
@@ -28,11 +28,7 @@ export const POST = async(req: Request)=>{
 
 // get
 export const GET = async(req: Request)=>{
-
     const id = await getUserSessionSever()
-    //console.log('sessionas:', id);
-    
-
     try {
         const getAllProducto = await prisma.producto.findMany({
             where:{

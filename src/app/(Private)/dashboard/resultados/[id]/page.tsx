@@ -6,13 +6,9 @@ import React from 'react'
 const page = async({params}:ParamsFinal) => {
 
     const idProducto = params.id
-    //console.log('iddeperams:', idProducto);
     const res = await getOneData({idProducto})
-
     const {nombreProducto, precio, id, userId} = res
 
-    //console.log('parametros', params);
-    
 
   return (
     <div className='w-full h-full grid place-items-center'>
