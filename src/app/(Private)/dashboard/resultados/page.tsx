@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import BadgeResultado from './Components/BadgeResultado'
 import { getData } from '@/app/Fetch/getData'
 
-const page =() => {
+const PageResultados =() => {
 
   const [producto, setProducto] = useState([])
 
@@ -49,4 +49,4 @@ const page =() => {
   )
 }
 
-export default page
+export default PageResultados

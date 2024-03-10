@@ -1,10 +1,8 @@
 'use client'
-import React from 'react'
 
 import { useSession } from "next-auth/react";
 
-
-const page =() => {
+const PagePerfil =() => {
 
     const {data: session} = useSession()
 
@@ -30,4 +28,4 @@ const page =() => {
   )
 }
 
-export default page
+export default PagePerfil
