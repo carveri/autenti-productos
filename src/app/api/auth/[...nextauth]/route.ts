@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import type { Adapter } from "next-auth/adapters";
+import { Adapter } from "next-auth/adapters";
 import prisma from "@/libs/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { singInEmailPassword } from "@/auth/actions/auth-actions";
@@ -66,7 +66,6 @@ export const authOptions: NextAuthOptions = {
 
           token.id = dbUser?.id ?? 'no-uuid'
           
-          
           return token
         },
         async session({ session, token, user }){
@@ -74,8 +73,6 @@ export const authOptions: NextAuthOptions = {
           if(session && session.user){
             session.user.id = token.id
           }
-
-
           return session
         }
       }

@@ -1,27 +1,19 @@
-'use client'
-
 import Link from 'next/link'
 import React from 'react'
 
-import { signIn } from "next-auth/react";
 
 const NavbarHome = () => {
-
-    const handleClickLogin = ()=>{
-        signIn()
-    }
-
   return (
-        <ul className='w-80  bg-red-900 grid grid-cols-3 place-items-center'>
-            <li>
+        <ul className='w-80 h-full grid grid-cols-3 bg-gray-600 place-items-center'>
+            <li className=' hover:underline'>
                 <Link href='/'>Preguntas</Link>
             </li>
-            <li>
+            <li className='hover:underline'>
                 <Link href='/'>Precios</Link>
             </li>
-            <button onClick={handleClickLogin}>
-                login
-            </button>
+            <li className='hover:underline'>
+                <Link href='/api/auth/signin'>Login</Link> 
+            </li>
         </ul>
   )
 }

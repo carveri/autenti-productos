@@ -1,27 +1,16 @@
-import { getServerSession } from 'next-auth';
+
 import React from 'react'
-import { authOptions } from '../api/auth/[...nextauth]/route';
-import { redirect } from 'next/navigation';
-import { Session } from '../Interfaces/Public/interHome';
+import NavbarHome from '../Front/Components/NavbarHome'
+
+//import { redirect } from 'next/navigation';
+
 
 const page = async() => {
 
-  redirect('/dashboard')
-
-  const session = await getServerSession(authOptions)
-
-  // validacion
-  if(!session){
-    redirect('/api/auth/signin')
-  }
-
-  console.log(session);
-
-  const userPintar:any = session
-
+  //redirect('/dashboard')
   return (
-    <div>
-       <h1>{userPintar.user.name ?? 'No hay usuario'}</h1>
+    <div className='w-full h-96 bg-gray-700 '>
+      olis
     </div>
   )
 }
