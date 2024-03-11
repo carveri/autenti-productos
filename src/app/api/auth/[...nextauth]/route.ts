@@ -1,13 +1,13 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { Adapter } from "next-auth/adapters";
+import type { Adapter } from "next-auth/adapters";
 import prisma from "@/libs/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { singInEmailPassword } from "@/auth/actions/auth-actions";
 
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
 
     providers: [
@@ -40,6 +40,9 @@ export const authOptions = {
 
         
       ],
+      // pages:{
+
+      // }
 
 
       session: {
@@ -78,5 +81,5 @@ export const authOptions = {
       }
 }
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions);
 export {handler as GET, handler as POST}

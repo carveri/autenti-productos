@@ -1,6 +1,7 @@
+import { InterPostOneData } from "../Interfaces/Private/interFetch";
 
 
-export const postOneData = async({ruta, data, id})=>{
+export const postOneData = async({ruta, data, id}:InterPostOneData)=>{
     console.log('ruta:', ruta);
     console.log('data:', data);
     console.log('id: ', id);

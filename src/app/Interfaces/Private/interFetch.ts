@@ -10,6 +10,12 @@ export interface InterPostData {
     data: PostData
 }
 
+export interface InterPostOneData {
+    ruta: string
+    data: PostData
+    id: string
+}
+
 
 export interface InterGetData {
     ruta: string
