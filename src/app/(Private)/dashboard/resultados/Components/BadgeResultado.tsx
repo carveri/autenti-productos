@@ -35,7 +35,7 @@ const BadgeResultado = ({nombreProducto, precio, id}:InterBadgeResultados) => {
   }
 
   return (
-    <div className='w-full h-16 grid grid-cols-4 place-items-center border-2 border-gray-700 bg-gray-500'>
+    <div className='w-full h-20 grid grid-cols-4 place-items-center border-4 border-gray-800 bg-black'>
         <section>
             {nombreProducto}
         </section>
@@ -49,12 +49,12 @@ const BadgeResultado = ({nombreProducto, precio, id}:InterBadgeResultados) => {
         </section>
         <section className=''>
           <article>
-            <button name='actualizar' onClick={handleClickBadgeResultados} className='bg-blue-500 w-24 mb-1 hover:bg-blue-900'>
+            <button name='actualizar' onClick={handleClickBadgeResultados} className='bg-blue-500 w-24 mb-2 hover:bg-blue-900'>
               Actualizar
             </button>
           </article>
           <article>
-            <button name='borrar' onClick={handleClickBadgeResultados} className='bg-red-500 w-24 hover:bg-red-700'>
+            <button name='borrar' onClick={handleClickBadgeResultados} className='bg-red-500 w-24 hover:bg-red-700 hover:bg-2 '>
               Borrar
             </button>
           </article>

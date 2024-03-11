@@ -14,7 +14,7 @@ const Navbar = () => {
     }
 
   return (
-        <ul className='w-80 h-14 bg-red-900 grid grid-cols-3 place-items-center'>
+        <ul className='w-80 h-14 bg-black grid grid-cols-3 place-items-center '>
            
             <li>
                 <Link href='/'>Cosas</Link>
