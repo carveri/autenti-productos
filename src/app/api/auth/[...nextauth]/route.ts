@@ -1,4 +1,5 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth from "next-auth"
+import type { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
@@ -7,7 +8,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { singInEmailPassword } from "@/auth/actions/auth-actions";
 
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
 
     providers: [
@@ -80,3 +81,5 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 export {handler as GET, handler as POST}
+
+//export default NextAuth(authOptions)
