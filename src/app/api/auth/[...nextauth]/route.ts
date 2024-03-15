@@ -1,11 +1,9 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth/next"
 import type { AuthOptions } from "next-auth";
-//import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
 import prisma from "@/libs/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { singInEmailPassword } from "@/auth/actions/auth-actions";
 import bcrypt from "bcryptjs";
 
 
@@ -13,34 +11,22 @@ export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
 
     providers: [
-        // GithubProvider({
-        //   clientId: process.env.GITHUB_ID!,
-        //   clientSecret: process.env.GITHUB_SECRET!,
-        // }),
-
         CredentialsProvider({
           name: "Credentials",
           credentials: {
             email: { label: "Email", type: "email", placeholder: "jsmith@gmail.com" },
             password: { label: "Contraseña", type: "password", placeholder: "***********" }
           },
-          async authorize(credentials, req) {
+          async authorize(credentials:any, req:any) {
             
-            const userFound = await prisma.user.findUnique({
+            const userFound:any = await prisma.user.findUnique({
               where: {
                 email: credentials?.email
               }
             })
-            //const user = await singInEmailPassword(credentials!.email, credentials!.password)
-            //console.log(userFound);
-
             if(!userFound) return null
-
-            const matchpassword = await bcrypt.compare(credentials?.password, userFound.password)
-            
-      
+            const matchpassword = await bcrypt.compare(credentials?.password, userFound?.password)
             if(!matchpassword) return null
-
             return {
               id: userFound.id,
               name: userFound.name,
@@ -55,8 +41,6 @@ export const authOptions: AuthOptions = {
         signIn: "/api/auth/login",
         signOut: "/sign-out"
       },
-
-
       session: {
         strategy: 'jwt'
       },

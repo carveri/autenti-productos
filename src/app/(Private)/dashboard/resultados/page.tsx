@@ -20,7 +20,7 @@ const PageResultados =() => {
 
   return (
    <section className='w-full h-full bg-gray-600 '>
-      <header className='h-20  bg-red-700 grid place-content-center text-2xl'>
+      <header className='h-20  bg-gray-900 grid place-content-center text-2xl border-2 border-gray-700'>
         Resultados
       </header>
       <div className='   '>

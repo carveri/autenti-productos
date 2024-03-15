@@ -17,10 +17,10 @@ const Navbar = () => {
         <ul className='w-80 h-14 bg-black grid grid-cols-3 place-items-center '>
            
             <li>
-                <Link href='/'>Cosas</Link>
+                <Link href='/dashboard/cosas'>Cosas</Link>
             </li>
             <li>
-                <Link href='/'>Mi Cuenta</Link>
+                <Link href='/dashboard/miCuenta'>Mi Cuenta</Link>
             </li>
             <button onClick={handleClickLogOut}>
                 Salir

@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next";
 import prisma from "./../../libs/prisma";
 import bcrypt from "bcryptjs";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+//import { newAuth } from "@/app/api/auth/auth";
 
 
 export const getUserSessionSever = async()=>{

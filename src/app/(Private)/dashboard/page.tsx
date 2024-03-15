@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth"
 import Formulario from "../Components/Formulario"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
+//import { newAuth } from "@/app/api/auth/auth"
 
 const page = async() => {
 
