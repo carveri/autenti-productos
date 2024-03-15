@@ -9,7 +9,7 @@ const page = async() => {
 
   // validacion
   if(!session){
-    redirect('/api/auth/signin')
+    redirect('/api/auth/login')
   }
 
   return (

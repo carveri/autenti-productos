@@ -47,7 +47,7 @@ const Formulario = () => {
 
 
   return (
-    <form onSubmit={handleSubmitProducto} className='w-full h-full px-8'>
+    <form onSubmit={handleSubmitProducto} className='w-full h-full px-8 '>
         <header className='h-1/5 text-2xl grid place-content-center'>
             Formulario
         </header>

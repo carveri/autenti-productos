@@ -1,21 +1,22 @@
 import NextAuth from "next-auth"
 import type { AuthOptions } from "next-auth";
-import GithubProvider from "next-auth/providers/github"
+//import GithubProvider from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
 import prisma from "@/libs/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { singInEmailPassword } from "@/auth/actions/auth-actions";
+import bcrypt from "bcryptjs";
 
 
 export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
 
     providers: [
-        GithubProvider({
-          clientId: process.env.GITHUB_ID ?? '',
-          clientSecret: process.env.GITHUB_SECRET ?? '',
-        }),
+        // GithubProvider({
+        //   clientId: process.env.GITHUB_ID!,
+        //   clientSecret: process.env.GITHUB_SECRET!,
+        // }),
 
         CredentialsProvider({
           name: "Credentials",
@@ -25,25 +26,35 @@ export const authOptions: AuthOptions = {
           },
           async authorize(credentials, req) {
             
-            const user = await singInEmailPassword(credentials!.email, credentials!.password)
+            const userFound = await prisma.user.findUnique({
+              where: {
+                email: credentials?.email
+              }
+            })
+            //const user = await singInEmailPassword(credentials!.email, credentials!.password)
+            //console.log(userFound);
+
+            if(!userFound) return null
+
+            const matchpassword = await bcrypt.compare(credentials?.password, userFound.password)
+            
       
-            if (user) {
-              
-              return user
-            } else {
-              
-              return null
-      
-              // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+            if(!matchpassword) return null
+
+            return {
+              id: userFound.id,
+              name: userFound.name,
+              email: userFound.email
             }
           }
         })
 
         
       ],
-      // pages:{
-
-      // }
+      pages: {
+        signIn: "/api/auth/login",
+        signOut: "/sign-out"
+      },
 
 
       session: {
